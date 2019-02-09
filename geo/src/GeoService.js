@@ -2,8 +2,8 @@ import axios from 'axios';
 import config from './config';
 
 const defaultGetLocationData = async (ip = '') => {
-  const { data: { country, city } } = await axios.get(`${config.api}${ip}`);
-  return { country, city };
+  const res = await axios.get(`${config.api}${ip}`);
+  return res;
 };
 
 export default class GeoService {
@@ -24,7 +24,7 @@ export default class GeoService {
   }
 
   prepareData = (data) => {
-    const { country, city } = data;
+    const { data: { country, city } } = data;
     return `country: ${country}, city: ${city}`;
   }
 }
