@@ -1,10 +1,10 @@
 {
-  "name": "geo",
+  "name": "geo-kruglov",
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
   "bin": {
-    "geo": "dist/bin/geo.js"
+    "geo-kruglov": "dist/bin/geo.js"
   },
   "engines": {
     "node": ">=8"

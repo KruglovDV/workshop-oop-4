@@ -1,5 +1,5 @@
 import app from 'commander';
-import GeoService from './geo';
+import GeoService from './GeoService';
 import config from './config';
 
 const geoService = new GeoService(config);

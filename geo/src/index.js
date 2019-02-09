@@ -1,4 +1,4 @@
 import 'source-map-support/register';
-import geo from './geo';
+import GeoService from './GeoService';
 
-export default geo;
+export default GeoService;
