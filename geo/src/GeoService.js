@@ -1,14 +1,30 @@
 import axios from 'axios';
+import config from './config';
+
+const defaultGetLocationData = async (ip = '') => {
+  const { data: { country, city } } = await axios.get(`${config.api}${ip}`);
+  return { country, city };
+};
 
 export default class GeoService {
-  constructor(config) {
-    this.config = config;
+  constructor(getLocationDataByIp = defaultGetLocationData) {
+    this.getLocationDataByIp = getLocationDataByIp;
   }
 
   getLocation = async (ip = '') => {
-    const { config: { api } } = this;
-    const { data: { country, city } } = await axios.get(`${api}${ip}`);
-    const res = `country: ${country}, city: ${city}`;
+    const { getLocationDataByIp } = this;
+    const res = await getLocationDataByIp(ip);
     return res;
+  }
+
+  getHumanResult = async (ip) => {
+    const data = await this.getLocation(ip);
+    const prepareData = this.prepareData(data);
+    return prepareData;
+  }
+
+  prepareData = (data) => {
+    const { country, city } = data;
+    return `country: ${country}, city: ${city}`;
   }
 }

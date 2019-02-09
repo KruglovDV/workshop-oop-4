@@ -1,8 +1,7 @@
 import app from 'commander';
 import GeoService from './GeoService';
-import config from './config';
 
-const geoService = new GeoService(config);
+const geoService = new GeoService();
 
 export default () => (
   app
@@ -10,6 +9,6 @@ export default () => (
     .arguments('[ip]')
     .description('Shows location')
     .action(async (ip) => {
-      const location = await geoService.getLocation(ip);
+      const location = await geoService.getHumanResult(ip);
       console.log(location);
     }));
