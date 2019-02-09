@@ -1,7 +1,7 @@
 import axios from 'axios';
 import config from './config';
 
-const defaultGetLocationData = async (ip = '') => {
+const defaultGetLocationData = async (ip) => {
   const res = await axios.get(`${config.api}${ip}`);
   return res;
 };
